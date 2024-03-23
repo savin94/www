@@ -28,8 +28,8 @@
 .tbl-full{
     width: 100%;
 }
-.tbl-30{
-    width: 30%;
+.tbl-80{
+    width: 80%;
 }
 
 table tr th{
@@ -43,36 +43,40 @@ table tr td{
 }
 
 .btn-primary{
-    background-color: #1e90ff;
+    background-color: #006ed9;
     padding: 1%;
     color: white;
     text-decoration: none;
     font-weight: bold;
+    border-radius: 8px;
 }
 .btn-primary:hover{
-    background-color: #3742fa;
+    background-color: #52a6f7;
 }
 
 .btn-secondary{
-    background-color: #7bed9f;
+    background-color: #05b528;
+    border-radius: 8px;
     padding: 1%;
-    color: black;
+    color: white;
     text-decoration: none;
     font-weight: bold;
+    border: none;
 }
 .btn-secondary:hover{
-    background-color: #2ed573;
+    background-color: #3ef062;
 }
 
 .btn-danger{
-    background-color: #ff6b81;
+    background-color: #e00413;
+    border-radius: 8px;
     padding: 1%;
     color: white;
     text-decoration: none;
     font-weight: bold;
 }
 .btn-danger:hover{
-    background-color: #ff4757;
+    background-color: #ff6671;
 }
 
 .success{
@@ -131,6 +135,19 @@ background-color: #e4e9eb;
     background-color: #0381a1;
     color: white;
     text-align: center;
+}
+
+.input-field{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+.input-field:focus  {
+    border-color: blue;
+    box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
 }
 /* CSS for Login */
 .login{

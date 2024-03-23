@@ -15,25 +15,25 @@
         ?>
 
         <form action="" method="POST">
-            <table class="tbl-30">
+            <table class="tbl-80">
                 <tr>
                     <td>Full Name: </td>
                     <td>
-                        <input type="text" name="full_name" placeholder="Enter Your Name">
+                        <input class="input-field" type="text" name="full_name" placeholder="Enter Your Name">
                     </td>
                 </tr>
 
                 <tr>
                     <td>Username: </td>
                     <td>
-                        <input type="text" name="username" placeholder="Your Username">
+                        <input class="input-field" type="text" name="username" placeholder="Your Username">
                     </td>
                 </tr>
 
                 <tr>
                     <td>Password: </td>
                     <td>
-                        <input type="password" name="password" placeholder="Your Password">
+                        <input class="input-field" type="password" name="password" placeholder="Your Password">
                     </td>
                 </tr>
 
@@ -73,7 +73,7 @@
         {
             $_SESSION['add'] = "<div class='success'>User Added Successfully.</div>";
             //Redirect Page to Manage Admin
-            header("location:".SITEURL.'admin/manage-user.php');
+            header("location:".SITEURL.'admin/manage-users.php');
         }
         else
         {
