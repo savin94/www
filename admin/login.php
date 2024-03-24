@@ -7,13 +7,11 @@
     <style>
         <?php include '../css/admin.scss'; ?>
     </style>
-    <body>
-        
-        <div class="login">
-            <h1 class="text-center">Login</h1>
-            <br><br>
+    <body class="login-wrapper">
 
-            <?php 
+        <div class="login">
+            <h1 class="text-center" style="">Login</h1>
+            <?php
                 if(isset($_SESSION['login']))
                 {
                     echo $_SESSION['login'];
@@ -66,8 +64,7 @@
         {
             $_SESSION['login'] = "<div id='tempDiv' class='success'>Login Successful.</div>";
             $_SESSION['user'] = $username;
-
-            header('location:'.SITEURL.'admin/');
+            echo "<script>location.href = '" . SITEURL . "admin/';</script>";
         }
         else
         {

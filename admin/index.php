@@ -6,7 +6,7 @@
     <div class="main-content">
         <div class="wrapper">
             <h1>Dashboard</h1>
-            <br><br>
+            <br>
             <?php
             if (isset($_SESSION['login'])) {
                 echo $_SESSION['login'];
@@ -26,21 +26,6 @@
                     }, 2000);
                   </script>";
             ?>
-            <br><br>
-
-<!--            <div class="col-4 text-center">-->
-<!---->
-<!--                --><?php
-//                $sql = "SELECT * FROM products";
-//                $res = mysqli_query($conn, $sql);
-//                $count = mysqli_num_rows($res);
-//                ?>
-<!---->
-<!--                <h1>--><?php //echo $count; ?><!--</h1>-->
-<!--                <br/>-->
-<!--                Categories-->
-<!--            </div>-->
-
                 <?php
                 $sql2 = "SELECT * FROM dishes";
                 $res2 = mysqli_query($conn, $sql2);
@@ -49,6 +34,7 @@
                     // Loop through each row of the result set
                     while ($row2 = mysqli_fetch_assoc($res2)) {
                         // Extract data from the current row
+                        $id = $row2['id'];
                         $name = $row2['name'];
                         $grams = $row2['grams'];
                         $price = $row2['price'];
@@ -66,8 +52,21 @@
                         echo '<h2 class="card-title">' . $name . '</h2>';
                         echo '<p class="card-info">Type: ' . $type . '</p>';
                         echo '<p class="card-info">Grams: ' . $grams . '</p>';
-                        echo '<p class="card-info">Price: ' . $price . '</p>';
+                        echo '<p class="card-info">Price: $' . $price . '</p>';
                         echo '<p class="card-info">Availability: ' . $is_available . '</p>';
+                        // Fetch associated products for the current dish
+                        $sql_products = "SELECT p.name FROM products p INNER JOIN dish_product dp ON p.id = dp.product_id WHERE dp.dish_id = $id";
+                        $res_products = mysqli_query($conn, $sql_products);
+
+                        // Display associated products
+                        $product_names = [];
+                        while ($product = mysqli_fetch_assoc($res_products)) {
+                            $product_names[] = $product['name'];
+                        }
+                        $products_string = implode(', ', $product_names);
+
+                        // Display associated products
+                        echo '<p class="card-info products-list">Products: ' . $products_string . '</p>';
                         echo '</div></div></div>';
                     }
                 }

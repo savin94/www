@@ -126,7 +126,7 @@ if (isset($_GET['id'])) {
                             <input <?php echo $is_available == "Yes" ? "checked" : "" ?> type="radio"
                                                                                          name="is_available"
                                                                                          value="Yes"> Yes
-                            <input <?php echo $is_available == "No" ? "checked" : "" ?>type="radio" name="is_available"
+                            <input <?php echo $is_available == "No" ? "checked" : "" ?> type="radio" name="is_available"
                                    value="No"> No
                         </td>
                     </tr>
