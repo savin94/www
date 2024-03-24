@@ -1,5 +1,7 @@
 <?php include('partials/menu.php'); ?>
-
+    <style>
+        <?php include '../css/admin.scss'; ?>
+    </style>
 <div class="main-content">
     <div class="wrapper">
         <h1>Manage Dishes</h1>
@@ -41,7 +43,18 @@
                         echo $_SESSION['update'];
                         unset($_SESSION['update']);
                     }
-                
+                    echo "<script>
+                        setTimeout(function(){
+                            var element = document.getElementById('tempDiv');
+                            if (element) {
+                                element.style.transition = 'opacity 1s';
+                                element.style.opacity = '0';
+                                setTimeout(function(){
+                                    element.parentNode.removeChild(element);
+                                }, 1000);
+                            }
+                        }, 2000);
+                      </script>";
                 ?>
 
                 <table class="tbl-full">
@@ -101,8 +114,8 @@
                                     </td>
                                     <td><?php echo $is_available; ?></td>
                                     <td>
-                                        <a href="<?php echo SITEURL; ?>admin/update-dish.php?id=<?php echo $id; ?>" class="btn-secondary">Update Dish</a>
-                                        <a href="<?php echo SITEURL; ?>admin/delete-dish.php?id=<?php echo $id; ?>" class="btn-danger">Delete Dish</a>
+                                        <a href="<?php echo SITEURL; ?>admin/update-dish.php?id=<?php echo $id; ?>" style="padding: 3%" class="btn-secondary">Update Dish</a>
+                                        <a href="<?php echo SITEURL; ?>admin/delete-dish.php?id=<?php echo $id; ?>" onclick="return confirm('Are you sure you want to delete this dish?')" style="padding: 3%" class="btn-danger" >Delete Dish</a>
                                     </td>
                                 </tr>
 

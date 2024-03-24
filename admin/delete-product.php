@@ -11,12 +11,12 @@
 
         if($res==true)
         {
-            $_SESSION['delete'] = "<div class='success'>Product Deleted Successfully.</div>";
+            $_SESSION['delete'] = "<div id='tempDiv' class='success'>Product Deleted Successfully.</div>";
             header('location:'.SITEURL.'admin/manage-products.php');
         }
         else
         {
-            $_SESSION['delete'] = "<div class='error'>Failed to Delete Product.</div>";
+            $_SESSION['delete'] = "<div id='tempDiv' class='error'>Failed to Delete Product.</div>";
             header('location:'.SITEURL.'admin/manage-products.php');
         }
     }

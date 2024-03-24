@@ -49,6 +49,7 @@ table tr td{
     text-decoration: none;
     font-weight: bold;
     border-radius: 8px;
+    border: none;
 }
 .btn-primary:hover{
     background-color: #52a6f7;
@@ -80,10 +81,24 @@ table tr td{
 }
 
 .success{
-    color: #2ed573;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+    padding: 0.2%;
+    border: #2ed573 solid 3px;
+    background-color: #2ed573;
+    border-radius: 6px;
 }
 .error{
-    color: #ff4757;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+    padding: 0.2%;
+    border: #ff4757 solid 3px;
+    background-color: #ff4757;
+    border-radius: 6px;
 }
 
 
@@ -151,8 +166,47 @@ background-color: #e4e9eb;
 }
 /* CSS for Login */
 .login{
-    border: 1px solid grey;
     width: 20%;
     margin: 10% auto;
     padding: 2%;
+    border-radius: 8px;
+    border: 3px solid #0381a1;
+    background-color: white;
+}
+.card-wrapper{
+    flex-direction: row;
+    display: ruby;
+}
+.card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: 15px;
+    padding: 20px;
+    background-color: #edf5f7;
+    position: relative;
+}
+
+.card-image {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.card-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.card-info {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+.check-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px; /* Adjust the size of the icon */
+    height: auto; /* Maintain aspect ratio */
 }

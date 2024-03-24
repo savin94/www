@@ -1,10 +1,12 @@
 <?php include('partials/menu.php'); ?>
-
+    <style>
+        <?php include '../css/admin.scss'; ?>
+    </style>
     <div class="main-content">
         <div class="wrapper">
             <h1>Manage Product</h1>
 
-            <br/><br/>
+            <br/>
             <?php
 
             if (isset($_SESSION['add'])) {
@@ -42,11 +44,22 @@
                 unset($_SESSION['failed-remove']);
             }
 
+            echo "<script>
+                    setTimeout(function(){
+                        var element = document.getElementById('tempDiv');
+                        if (element) {
+                            element.style.transition = 'opacity 1s';
+                            element.style.opacity = '0';
+                            setTimeout(function(){
+                                element.parentNode.removeChild(element);
+                            }, 1000);
+                        }
+                    }, 2000);
+                  </script>";
             ?>
-            <br><br>
+            <br>
 
-            <!-- Button to Add Admin -->
-            <a href="<?php echo SITEURL; ?>admin/add-product.php" class="btn-primary">Add Category</a>
+            <a href="<?php echo SITEURL; ?>admin/add-product.php" class="btn-primary">Add Product</a>
 
             <br/><br/><br/>
 
@@ -90,9 +103,9 @@
                             <td><?php echo $type; ?></td>
                             <td>
                                 <a href="<?php echo SITEURL; ?>admin/update-product.php?id=<?php echo $id; ?>"
-                                   class="btn-secondary">Update Product</a>
-                                <a href="<?php echo SITEURL; ?>admin/delete-product.php?id=<?php echo $id; ?>&image_name=<?php echo $image_name; ?>"
-                                   class="btn-danger">Delete Product</a>
+                                   class="btn-secondary" style="padding: 2%">Update Product</a>
+                                <a href="<?php echo SITEURL; ?>admin/delete-product.php?id=<?php echo $id; ?>"
+                                   class="btn-danger" style="padding: 2%" onclick="return confirm('Are you sure you want to delete this product?')">Delete Product</a>
                             </td>
                         </tr>
 

@@ -1,11 +1,12 @@
 <?php include('../config/constants.php'); ?>
-
 <html>
     <head>
         <title>Login - Food Order System</title>
         <link rel="stylesheet" href="../css/admin.scss">
     </head>
-
+    <style>
+        <?php include '../css/admin.scss'; ?>
+    </style>
     <body>
         
         <div class="login">
@@ -30,17 +31,17 @@
             <!-- Login Form Starts HEre -->
             <form action="" method="POST" class="text-center">
             Username: <br>
-            <input type="text" name="username" placeholder="Enter Username"><br><br>
+            <input class="input-field" type="text" name="username" style="margin-top: 10px" placeholder="Enter Username"><br><br>
 
             Password: <br>
-            <input type="password" name="password" placeholder="Enter Password"><br><br>
+            <input class="input-field" type="password" name="password" style="margin-top: 10px" placeholder="Enter Password"><br><br>
 
-            <input type="submit" name="submit" value="Login" class="btn-primary">
+            <input type="submit" name="submit" value="Login" style="padding: 5%; width: 100%" class="btn-primary">
             <br><br>
             </form>
             <!-- Login Form Ends HEre -->
 
-            <p class="text-center">Created By - <a href="www.vijaythapa.com">Vijay Thapa</a></p>
+            <p class="text-center">Created By - Savin Bratanov</a></p>
         </div>
 
     </body>
@@ -48,7 +49,6 @@
 
 <?php 
 
-    //CHeck whether the Submit Button is Clicked or NOt
     if(isset($_POST['submit']))
     {
         $username = mysqli_real_escape_string($conn, $_POST['username']);
@@ -64,14 +64,14 @@
 
         if($count==1)
         {
-            $_SESSION['login'] = "<div class='success'>Login Successful.</div>";
-            $_SESSION['user'] = $username; //TO check whether the user is logged in or not and logout will unset it
+            $_SESSION['login'] = "<div id='tempDiv' class='success'>Login Successful.</div>";
+            $_SESSION['user'] = $username;
 
             header('location:'.SITEURL.'admin/');
         }
         else
         {
-            $_SESSION['login'] = "<div class='error text-center'>Username or Password did not match.</div>";
+            $_SESSION['login'] = "<div id='tempDiv' class='error text-center'>Username or Password did not match.</div>";
             header('location:'.SITEURL.'admin/login.php');
         }
     }

@@ -96,14 +96,14 @@
                 if($res==true)
                 {
                     //Query Executed and Category Added
-                    $_SESSION['add'] = "<div class='success'>Product Added Successfully.</div>";
+                    $_SESSION['add'] = "<div id='tempDiv' class='success'>Product Added Successfully.</div>";
                     //Redirect to Manage Category Page
                     header('location:'.SITEURL.'admin/manage-products.php');
                 }
                 else
                 {
                     //Failed to Add CAtegory
-                    $_SESSION['add'] = "<div class='error'>Failed to Add Product.</div>";
+                    $_SESSION['add'] = "<div id='tempDiv' class='error'>Failed to Add Product.</div>";
                     //Redirect to Manage Category Page
                     header('location:'.SITEURL.'admin/add-product.php');
                 }

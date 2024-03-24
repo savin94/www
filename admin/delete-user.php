@@ -11,12 +11,12 @@
 
     if($res==true)
     {
-        $_SESSION['delete'] = "<div class='success'>User Deleted Successfully.</div>";
+        $_SESSION['delete'] = "<div id='tempDiv' class='success'>User Deleted Successfully.</div>";
         header('location:'.SITEURL.'admin/manage-users.php');
     }
     else
     {
-        $_SESSION['delete'] = "<div class='error'>Failed to Delete User. Try Again Later.</div>";
+        $_SESSION['delete'] = "<div id='tempDiv' class='error'>Failed to Delete User. Try Again Later.</div>";
         header('location:'.SITEURL.'admin/manage-users.php');
     }
 ?>

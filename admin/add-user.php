@@ -71,13 +71,13 @@
 
         if($res==TRUE)
         {
-            $_SESSION['add'] = "<div class='success'>User Added Successfully.</div>";
+            $_SESSION['add'] = "<div id='tempDiv' class='success'>User Added Successfully.</div>";
             //Redirect Page to Manage Admin
             header("location:".SITEURL.'admin/manage-users.php');
         }
         else
         {
-            $_SESSION['add'] = "<div class='error'>Failed to Add User.</div>";
+            $_SESSION['add'] = "<div id='tempDiv' class='error'>Failed to Add User.</div>";
             //Redirect Page to Add Admin
             header("location:".SITEURL.'admin/add-user.php');
         }

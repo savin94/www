@@ -94,14 +94,14 @@
         if($res==true)
         {
             //Query Executed and Admin Updated
-            $_SESSION['update'] = "<div class='success'>User Updated Successfully.</div>";
+            $_SESSION['update'] = "<div id='tempDiv' class='success'>User Updated Successfully.</div>";
             //Redirect to Manage Admin Page
             header('location:'.SITEURL.'admin/manage-users.php');
         }
         else
         {
             //Failed to Update Admin
-            $_SESSION['update'] = "<div class='error'>Failed to Update User.</div>";
+            $_SESSION['update'] = "<div  id='tempDiv' class='error'>Failed to Update User.</div>";
             //Redirect to Manage Admin Page
             header('location:'.SITEURL.'admin/manage-users.php');
         }

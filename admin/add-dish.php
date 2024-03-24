@@ -42,7 +42,7 @@
                     <tr>
                         <td>Price:</td>
                         <td>
-                            <input class="input-field" type="number" name="price">
+                            <input class="input-field" type="number" step="0.01" name="price">
                         </td>
                     </tr>
 
@@ -78,7 +78,7 @@
                             }
                             ?>
 
-                            <select class="input-field" name="menu_type">
+                            <select class="input-field" name="type">
                                 <?php foreach ($enumOptions as $option) : ?>
                                     <option value="<?php echo $option; ?>"><?php echo $option; ?></option>
                                 <?php endforeach; ?>
@@ -86,31 +86,20 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Product:</td>
+                        <td>Select Products:</td>
                         <td>
-                            <select class="input-field" name="category">
+                            <select class="input-field" name="products[]" id="products" multiple>
+                                <!-- Fetch products from database and populate options -->
                                 <?php
-                                $sql = "SELECT * FROM products";
+                                // Query to fetch products
+                                $sql = "SELECT id, name FROM products";
+                                $result = $conn->query($sql);
 
-                                $res = mysqli_query($conn, $sql);
-
-                                $count = mysqli_num_rows($res);
-
-                                if ($count > 0) {
-                                    while ($row = mysqli_fetch_assoc($res)) {
-                                        $id = $row['id'];
-                                        $name = $row['name'];
-
-                                        ?>
-
-                                        <option value="<?php echo $id; ?>"><?php echo $name; ?></option>
-
-                                        <?php
+                                // Populate options
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_assoc()) {
+                                        echo "<option value='" . $row["id"] . "'>" . $row["name"] . "</option>";
                                     }
-                                } else {
-                                    ?>
-                                    <option value="0">No Products Found</option>
-                                    <?php
                                 }
                                 ?>
                             </select>
@@ -130,9 +119,7 @@
                             <input type="submit" name="submit" value="Add Dish" class="btn-secondary">
                         </td>
                     </tr>
-
                 </table>
-
             </form>
 
 
@@ -162,18 +149,25 @@
                     is_available = '$is_available'
                 ";
 
-                //Execute the Query
                 $res2 = mysqli_query($conn, $sql2);
 
-                //CHeck whether data inserted or not
-                //4. Redirect with MEssage to Manage Food page
+                // Get selected products
+                $selected_products = $_POST['products'];
+                if ($res2) {
+                    // Get the ID of the newly inserted dish
+                    $dish_id = mysqli_insert_id($conn);
+                    // Loop through selected products and insert associations into junction table
+                    foreach ($selected_products as $product_id) {
+                        $sql = "INSERT INTO dish_product (dish_id, product_id) VALUES ($dish_id, $product_id)";
+                        $result = $conn->query($sql);
+                    }
+                }
+
                 if ($res2 == true) {
-                    //Data inserted Successfullly
-                    $_SESSION['add'] = "<div class='success'>Food Added Successfully.</div>";
+                    $_SESSION['add'] = "<div id='tempDiv' class='success'>Dish Added Successfully.</div>";
                     header('location:' . SITEURL . 'admin/manage-dishes.php');
                 } else {
-                    //FAiled to Insert Data
-                    $_SESSION['add'] = "<div class='error'>Failed to Add Food.</div>";
+                    $_SESSION['add'] = "<div id='tempDiv' class='error'>Failed to Add Dish.</div>";
                     header('location:' . SITEURL . 'admin/manage-dishes.php');
                 }
             }
